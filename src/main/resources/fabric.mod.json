@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "buildersadditions",
+	"version": "0.0.1",
+	"name": "Builders Additions",
+	"description": "Adding custom building blocks and helpful features to the game!",
+	"authors": [
+		"Owner - PrangellPlays",
+		"Author - Plasmythic Studios"
+	],
+	"license": "Plasmythic Studios",
+	"icon": "assets/buildersadditions/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.prangellplays.buildersadditions.BuildersAdditions"
+		],
+		"client": [
+			"net.prangellplays.buildersadditions.BuildersAdditionsClient"
+		],
+		"fabric-datagen": [
+			"net.prangellplays.buildersadditions.BuildersAdditionsDataGenerator"
+		]
+	},
+	"mixins": [
+		"buildersadditions.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
