@@ -1,4 +1,4 @@
-package net.prangellplays.buildersadditions.particle;
+package net.prangellplays.buildersadditions.particle.dye;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -12,8 +12,8 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.util.math.BlockPos;
 import net.prangellplays.buildersadditions.BuildersAdditionsClient;
 
-public class BrownPaintParticle extends SpriteBillboardParticle {
-    BrownPaintParticle(ClientWorld world, double x, double y, double z, Fluid fluid) {
+public class LightGrayDyeParticle extends SpriteBillboardParticle {
+    LightGrayDyeParticle(ClientWorld world, double x, double y, double z, Fluid fluid) {
         super(world, x, y, z);
         this.setBoundingBoxSpacing(0.01f, 0.01f);
         this.gravityStrength = 0.06f;
@@ -64,11 +64,11 @@ public class BrownPaintParticle extends SpriteBillboardParticle {
     }
 
     @Environment(value= EnvType.CLIENT)
-    public static class LandingBrownPaintFactory
+    public static class LandingLightGrayDyeFactory
             implements ParticleFactory<DefaultParticleType> {
         protected final SpriteProvider spriteProvider;
 
-        public LandingBrownPaintFactory(SpriteProvider spriteProvider) {
+        public LandingLightGrayDyeFactory(SpriteProvider spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 
@@ -83,16 +83,16 @@ public class BrownPaintParticle extends SpriteBillboardParticle {
     }
 
     @Environment(value=EnvType.CLIENT)
-    public static class FallingBrownPaintFactory implements ParticleFactory<DefaultParticleType> {
+    public static class FallingLightGrayDyeFactory implements ParticleFactory<DefaultParticleType> {
         protected final SpriteProvider spriteProvider;
 
-        public FallingBrownPaintFactory(SpriteProvider spriteProvider) {
+        public FallingLightGrayDyeFactory(SpriteProvider spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 
         @Override
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            ContinuousFalling blockLeakParticle = new ContinuousFalling(clientWorld, d, e, f, Fluids.EMPTY, BuildersAdditionsClient.LANDING_BROWN_PAINT);
+            ContinuousFalling blockLeakParticle = new ContinuousFalling(clientWorld, d, e, f, Fluids.EMPTY, BuildersAdditionsClient.LANDING_LIGHT_GRAY_DYE);
             blockLeakParticle.gravityStrength = 0.01f;
             blockLeakParticle.setColor(0.6f, 0.36f, 0.2f);
             blockLeakParticle.setSprite(this.spriteProvider);
@@ -101,16 +101,16 @@ public class BrownPaintParticle extends SpriteBillboardParticle {
     }
 
     @Environment(value=EnvType.CLIENT)
-    public static class DrippingBrownPaintFactory implements ParticleFactory<DefaultParticleType> {
+    public static class DrippingLightGrayDyeFactory implements ParticleFactory<DefaultParticleType> {
         protected final SpriteProvider spriteProvider;
 
-        public DrippingBrownPaintFactory(SpriteProvider spriteProvider) {
+        public DrippingLightGrayDyeFactory(SpriteProvider spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 
         @Override
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            Dripping dripping = new Dripping(clientWorld, d, e, f, Fluids.EMPTY, BuildersAdditionsClient.FALLING_BROWN_PAINT);
+            Dripping dripping = new Dripping(clientWorld, d, e, f, Fluids.EMPTY, BuildersAdditionsClient.FALLING_LIGHT_GRAY_DYE);
             dripping.gravityStrength *= 0.01f;
             dripping.setMaxAge(100);
             dripping.setColor(0.6f, 0.36f, 0.2f);
@@ -120,7 +120,7 @@ public class BrownPaintParticle extends SpriteBillboardParticle {
     }
 
     @Environment(value=EnvType.CLIENT)
-    static class Dripping extends BrownPaintParticle {
+    static class Dripping extends LightGrayDyeParticle {
         private final ParticleEffect nextParticle;
 
         Dripping(ClientWorld world, double x, double y, double z, Fluid fluid, ParticleEffect nextParticle) {
@@ -165,7 +165,7 @@ public class BrownPaintParticle extends SpriteBillboardParticle {
     }
 
     @Environment(value=EnvType.CLIENT)
-    static class Falling extends BrownPaintParticle {
+    static class Falling extends LightGrayDyeParticle {
         Falling(ClientWorld clientWorld, double d, double e, double f, Fluid fluid) {
             this(clientWorld, d, e, f, fluid, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
         }
@@ -184,7 +184,7 @@ public class BrownPaintParticle extends SpriteBillboardParticle {
     }
 
     @Environment(value=EnvType.CLIENT)
-    static class Landing extends BrownPaintParticle {
+    static class Landing extends LightGrayDyeParticle {
         Landing(ClientWorld clientWorld, double d, double e, double f, Fluid fluid) {
             super(clientWorld, d, e, f, fluid);
             this.maxAge = (int)(16.0 / (Math.random() * 0.8 + 0.2));

@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "buildersadditions:block/red_dye_block"
+  }
+}

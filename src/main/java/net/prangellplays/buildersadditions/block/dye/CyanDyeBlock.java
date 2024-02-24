@@ -1,4 +1,4 @@
-package net.prangellplays.buildersadditions.block;
+package net.prangellplays.buildersadditions.block.dye;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -9,8 +9,8 @@ import net.minecraft.world.World;
 import net.prangellplays.buildersadditions.BuildersAdditionsClient;
 import net.prangellplays.buildersadditions.registry.BuildersAdditionsBlocks;
 
-public class BrownDyeBlock extends Block {
-    public BrownDyeBlock(Settings settings) {
+public class CyanDyeBlock extends Block {
+    public CyanDyeBlock(Settings settings) {
         super(settings);
     }
 
@@ -32,11 +32,11 @@ public class BrownDyeBlock extends Block {
         double d = direction.getOffsetX() == 0 ? random.nextDouble() : 0.5 + (double) direction.getOffsetX() * 0.6;
         double e = direction.getOffsetY() == 0 ? random.nextDouble() : 0.5 + (double) direction.getOffsetY() * 0.6;
         double f = direction.getOffsetZ() == 0 ? random.nextDouble() : 0.5 + (double) direction.getOffsetZ() * 0.6;
-        world.addParticle(BuildersAdditionsClient.DRIPPING_BROWN_PAINT, (double) pos.getX() + d, (double) pos.getY() + e, (double) pos.getZ() + f, 0.0, 0.0, 0.0);
+        world.addParticle(BuildersAdditionsClient.DRIPPING_CYAN_DYE, (double) pos.getX() + d, (double) pos.getY() + e, (double) pos.getZ() + f, 0.0, 0.0, 0.0);
     }
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return state.getBlock() == BuildersAdditionsBlocks.BROWN_DYE_BLOCK;
+        return state.getBlock() == BuildersAdditionsBlocks.CYAN_DYE_BLOCK;
     }
 }
